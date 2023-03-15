@@ -1,6 +1,7 @@
 import { HomePageContainer, HomePage } from "./styled"
 import { Input,Button } from "../styledCommon"
 import Logo from "../../assets/logo-completa.svg"
+import {Link} from "react-router-dom"
 
 export default function Login() {
     return (
@@ -12,7 +13,7 @@ export default function Login() {
                 <Input placeholder="email"></Input>
                 <Input placeholder="senha"></Input>
                 <Button> Entrar </Button>
-                <a > Não tem uma conta? Cadastre-se</a>
+                <Link to={"/cadastro"}> Não tem uma conta? Cadastre-se</Link>
 
             </HomePage>
         </HomePageContainer>

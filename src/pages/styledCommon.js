@@ -21,6 +21,10 @@ export const Input = styled.input`
        
     }
 
+    :disabled{
+        background-color: #F2F2F2;
+    }
+
 `
 
 export const Button = styled.button`
@@ -29,6 +33,10 @@ export const Button = styled.button`
     background-color: #52B6FF;
     border-radius: 5px;
     border:none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     font-family: 'Lexend Deca';
     font-style: normal;
