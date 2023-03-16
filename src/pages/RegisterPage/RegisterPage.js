@@ -73,7 +73,7 @@ export default function RegisterPage() {
                         value={form.image}
                         onChange={handleForm}
                     />
-                    <Button data-test="signup-btn" type="submit">
+                    <Button data-test="signup-btn" disabled={disabledButton} type="submit">
                         {disabledButton ? <ThreeDots color="#FFFFFF" height={80} width={80} timeout={3000} // 3 secs 
                         /> : "Cadastrar"
                         }
