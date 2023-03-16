@@ -2,7 +2,7 @@ import { RegisterContainer, Register } from "./styled"
 import { Input, Button } from "../styledCommon"
 import Logo from "../../assets/logo-completa.svg"
 import { Link, useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
+import {useState } from "react"
 import axios from "axios"
 import { URL_CADASTRO } from "../Urls"
 import { ThreeDots } from "react-loader-spinner"
@@ -39,7 +39,7 @@ export default function RegisterPage() {
                 <Register>
                     <img src={Logo} alt={Logo} />
 
-                    <Input
+                    <Input data-test="email-input"
                         type="email"
                         placeholder="email"
                         name={"email"}
@@ -47,7 +47,7 @@ export default function RegisterPage() {
                         disabled={disabledButton}
                         onChange={handleForm} />
 
-                    <Input
+                    <Input data-test="password-input"
                         type="password"
                         placeholder="senha"
                         name={"password"}
@@ -56,7 +56,7 @@ export default function RegisterPage() {
                         onChange={handleForm}
 
                     />
-                    <Input
+                    <Input data-test="user-name-input"
                         type="text"
                         placeholder="nome"
                         name={"name"}
@@ -65,7 +65,7 @@ export default function RegisterPage() {
                         onChange={handleForm}
 
                     />
-                    <Input
+                    <Input data-test="user-image-input"
                         type="text"
                         placeholder="foto"
                         name={"image"}
@@ -73,13 +73,13 @@ export default function RegisterPage() {
                         value={form.image}
                         onChange={handleForm}
                     />
-                    <Button type="submit">
+                    <Button data-test="signup-btn" type="submit">
                         {disabledButton ? <ThreeDots color="#FFFFFF" height={80} width={80} timeout={3000} // 3 secs 
                         /> : "Cadastrar"
                         }
 
                     </Button>
-                    <Link to={"/"}> Já tem uma conta? Faça login!</Link>
+                    <Link data-test="login-link" to={"/"}> Já tem uma conta? Faça login!</Link>
                 </Register>
             </form>
 

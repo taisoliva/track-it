@@ -47,5 +47,104 @@ export const Button = styled.button`
 
     margin-bottom: 25px;
     
+`
+
+export const Container = styled.div`
+    background-color: #E5E5E5;;
+    width: 100%;
+    height: 93vh;
+
+    a{
+        text-decoration: none;
+    }
+`
+
+export const Header = styled.div`
+    background-color: #126BA5;
+    width: 100%;
+    height: 70px;
+
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img{
+        width: 100px;
+        height: 50px;
+
+        margin-left: 20px;
+    }
+`
+export const ImageUser = styled.div`
+    width: 50px;
+    height: 50px;
+
+    background-color: red;
+
+    margin-right: 20px;
+
+    border-radius: 100px;
+
+    background-image: url("https://cdn.decoraonline.com.br/media/catalog/product/Q/D/QDBBA___thumbnail_3.jpg?width=700&height=700&store=default&image-type=image");
+    background-size:cover;
+   
+`
+
+export const Footer = styled.div`
+    position: fixed;
+
+    bottom: 0;
+
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17.976px;
+    line-height: 22px;
+    text-align: center;
+
+`
+
+export const ContainerRectangle = styled.div`
+
+    width: 70px;
+    height: 20px;
+
+    
+
+    margin-left: 40px;
+    margin-right: 40px;
+
+    color: #52B6FF;
+    
+
+`
+
+export const ContainerCircle = styled.div`
+
+    width: 90px;
+    height: 90px;
+
+    background-color: #52B6FF;
+
+    border-radius: 100px;
+
+    position: absolute;
+
+    bottom: 1vh;
+    left: 40vw;
+
+    color: #FFFFFF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 `
