@@ -47,9 +47,9 @@ export default function HabbitsPage({ token }) {
     }
 
     function handleDaySelect(day) {
-        const array = [...selectedDays]
+        let array = [...selectedDays]
         if (array.includes(day)) {
-            array.filter(d => d !== day);
+            array = array.filter(d => d !== day);
             setSelectedDays(array)
         } else {
             array.push(day)
@@ -58,6 +58,8 @@ export default function HabbitsPage({ token }) {
 
         setForm({...form, days: array})
     }
+
+    
 
     function Save (event){
         event.preventDefault()
@@ -117,7 +119,7 @@ export default function HabbitsPage({ token }) {
                                                 selectedDays={selectedDays} />)}
                         </Week>
 
-                        <ButtonCancel data-test="habit-create-cancel-btn" type="button" onClick={cancel}> Cancelar </ButtonCancel>
+                        <ButtonCancel data-test="habit-create-cancel-btn" type="button" disabled={disabledButton} onClick={cancel}> Cancelar </ButtonCancel>
                         <ButtonSave data-test="habit-create-save-btn" type="submit" disabled={disabledButton} > {disabledButton ? <ThreeDots color="#FFFFFF" height={80} width={80} timeout={3000} // 3 secs 
                         /> : "Salvar"
                         } </ButtonSave>

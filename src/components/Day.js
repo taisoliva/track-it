@@ -5,7 +5,7 @@ export default function Day({handleDaySelect, d, selectedDays, disabledButton, i
         <Days data-test="habit-day"
             type="button" 
             onClick={() => handleDaySelect(indice)}
-            color={selectedDays.includes(indice) ? true : false}
+            color={selectedDays.includes(indice)}
             disabled={disabledButton} >
             {d[0]}
         </Days>
