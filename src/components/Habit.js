@@ -3,14 +3,14 @@ import { Week } from "../pages/HabbitsPage/styled"
 
 export default function Habit({ name, id ,days, week, deleteHabit }) {
     return (
-        <ContainerItem>
+        <ContainerItem data-test="habit-container">
             <Title>
-                <p> {name} </p>
-                <ion-icon onClick={() => deleteHabit(id)}  name="trash-outline"></ion-icon>
+                <p data-test="habit-name"> {name} </p>
+                <ion-icon  data-test="habit-delete-btn" onClick={() => deleteHabit(id)}  name="trash-outline"></ion-icon>
             </Title>
 
             <Week>
-                {week.map( (d,indice) => <Day key={indice} color={days.includes(indice)}> {d[0]} </Day>)}
+                {week.map( (d,indice) => <Day data-test="habit-day" key={indice} color={days.includes(indice)}> {d[0]} </Day>)}
             </Week>
 
         </ContainerItem>)
