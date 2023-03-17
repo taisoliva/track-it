@@ -1,16 +1,17 @@
 import { Container, Header, ImageUser, Footer, ContainerRectangle, ContainerCircle } from "../styledCommon"
 import LogoTrackit from "../../assets/TrackIt.png"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { URL_HABITS } from "../Urls"
 import axios from "axios"
 import {
     Content, ContentFixed, ContainerIonIcon,
-    Text, NewHabit, Days, Week, ButtonSave, ButtonCancel
+    Text, NewHabit, Days, Week, ButtonSave, ButtonCancel, ContainerHabit
 } from "./styled"
 import { Link } from "react-router-dom"
 import { Input } from "../styledCommon"
 import Day from "../../components/Day"
 import { ThreeDots } from "react-loader-spinner"
+import Habit from "../../components/Habit"
 
 
 export default function HabbitsPage({ token }) {
@@ -21,6 +22,10 @@ export default function HabbitsPage({ token }) {
     const [ativeAdd, setAtiveAdd] = useState("none")
     const [selectedDays, setSelectedDays] = useState([]);
     const week = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
+
+    const ReloadDataHabits = useCallback(() => {
+        console.log("Aconteceu alguma coisa")
+    }, [])
 
     useEffect(() => {
         const config = {
@@ -33,11 +38,13 @@ export default function HabbitsPage({ token }) {
 
     }, [])
 
+
+
     function addHabit() {
         setAtiveAdd("flex")
     }
 
-    function cancel (){
+    function cancel() {
         setAtiveAdd("none")
         setDisabledButton(false)
     }
@@ -56,32 +63,48 @@ export default function HabbitsPage({ token }) {
             setSelectedDays(array)
         }
 
-        setForm({...form, days: array})
+        setForm({ ...form, days: array })
     }
 
-    
-
-    function Save (event){
+    function Save(event) {
         event.preventDefault()
-        
+
         setDisabledButton(true)
         const body = { ...form }
-       
+
         console.log(body)
 
-        const config ={
-            headers : {Authorization : `Bearer ${token}`}
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
         }
-        
-        axios.post(URL_HABITS, body ,config)
-        .then(res =>{console.log(res)
-                     setDisabledButton(false)
-                     setSelectedDays([])
-                     setAtiveAdd("none")
-                     setForm({ name: "", days: "" })
-        } )
-        .catch(err => {alert(err.response.data.message); setDisabledButton(false)})
 
+        axios.post(URL_HABITS, body, config)
+            .then(res => {
+                console.log(res)
+                setDisabledButton(false)
+                setSelectedDays([])
+                setAtiveAdd("none")
+                setForm({ name: "", days: "" })
+                axios.get(URL_HABITS, config)
+                    .then(res => { console.log(res); setDataHabit(res.data) })
+                    .catch(err => console.log(err))
+
+            })
+            .catch(err => { alert(err.response.data.message); setDisabledButton(false) })
+    }
+
+    function deleteHabit(id) {
+        if (window.confirm("Deseja realmente excluir o Hábito?")) {
+            const config = { headers: { Authorization: `Bearer ${token}` } }
+
+            axios.delete(`${URL_HABITS}/${id}`, config)
+                .then(res => {
+                    axios.get(URL_HABITS, config)
+                    .then(res => { console.log(res); setDataHabit(res.data) })
+                    .catch(err => console.log(err))
+                })
+                .catch(err => console.log(err.response.data.message))
+        }
     }
 
     return (
@@ -100,6 +123,22 @@ export default function HabbitsPage({ token }) {
                     </ContainerIonIcon>
                 </ContentFixed>
 
+                {dataHabit.length === 0 &&
+                    <Text ativeAdd={ativeAdd}> Você não tem nenhum hábito cadastrado ainda.
+                        Adicione um hábito para começar a trackear!
+                    </Text>
+                }
+
+                <ContainerHabit ativeAdd={ativeAdd}>
+                    {dataHabit.length !== 0 && dataHabit.map((h) => <Habit key={h.id}
+                        id={h.id}
+                        name={h.name}
+                        days={h.days}
+                        week={week}
+                        deleteHabit={deleteHabit} />)}
+                </ContainerHabit>
+
+
                 <NewHabit data-test="habit-create-container" ativeAdd={ativeAdd} onSubmit={Save}>
                     <form>
                         <Input data-test="habit-name-input"
@@ -111,12 +150,12 @@ export default function HabbitsPage({ token }) {
                             onChange={handleForm} />
 
                         <Week>
-                            {week.map((d,indice) => <Day key={indice}
-                                                handleDaySelect={handleDaySelect}
-                                                d={d}
-                                                indice={indice}
-                                                disabledButton={disabledButton}
-                                                selectedDays={selectedDays} />)}
+                            {week.map((d, indice) => <Day key={indice}
+                                handleDaySelect={handleDaySelect}
+                                d={d}
+                                indice={indice}
+                                disabledButton={disabledButton}
+                                selectedDays={selectedDays} />)}
                         </Week>
 
                         <ButtonCancel data-test="habit-create-cancel-btn" type="button" disabled={disabledButton} onClick={cancel}> Cancelar </ButtonCancel>
@@ -129,8 +168,6 @@ export default function HabbitsPage({ token }) {
                         </Text>
                     </form>
                 </NewHabit>
-
-
             </Content>
 
             <Footer data-test="menu">

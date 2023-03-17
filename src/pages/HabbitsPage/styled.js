@@ -63,9 +63,9 @@ export const Text = styled.div`
     height: 70px;
 
     margin: 7vh auto;
+    padding-left: 20px;
     
     
-
     position: absolute;
     left: 0;
    
@@ -77,7 +77,7 @@ export const Text = styled.div`
     
     color:#666666;
 
-    display: flex;
+    display: ${props => props.ativeAdd ==="flex" ? "none" : "flex"};;
     flex-wrap: wrap;
 
     
@@ -182,4 +182,17 @@ export const ButtonCancel = styled.button`
     bottom: 15px;
     right: 120px;
     
+`
+
+export  const ContainerHabit = styled.div`
+    width: 90vw;
+    height: 71vh;
+    
+    margin-top: 10vh;
+    margin-left: 4vw;
+
+    display: ${props => props.ativeAdd ==="flex" ? "none" : "flex"};
+    flex-direction: column;
+    align-items: center;
+
 `
