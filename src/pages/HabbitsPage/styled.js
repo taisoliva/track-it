@@ -195,4 +195,6 @@ export  const ContainerHabit = styled.div`
     flex-direction: column;
     align-items: center;
 
+    overflow: scroll;
+
 `
