@@ -86,7 +86,7 @@ export const ImageUser = styled.div`
 
     border-radius: 100px;
 
-    background-image: url("https://cdn.decoraonline.com.br/media/catalog/product/Q/D/QDBBA___thumbnail_3.jpg?width=700&height=700&store=default&image-type=image");
+    background-image: url(${props => props.imageUser});
     background-size:cover;
    
 `

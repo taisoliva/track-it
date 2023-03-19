@@ -1,6 +1,6 @@
 import { Container, Header, ImageUser, Footer, ContainerRectangle, ContainerCircle } from "../styledCommon"
 import LogoTrackit from "../../assets/TrackIt.png"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { URL_HABITS } from "../Urls"
 import axios from "axios"
 import {
@@ -12,9 +12,9 @@ import { Input } from "../styledCommon"
 import Day from "../../components/Day"
 import { ThreeDots } from "react-loader-spinner"
 import Habit from "../../components/Habit"
+import UserData from "../../context/UserData"
 
-
-export default function HabbitsPage({ token }) {
+export default function HabbitsPage() {
 
     const [dataHabit, setDataHabit] = useState("")
     const [disabledButton, setDisabledButton] = useState(false)
@@ -22,6 +22,10 @@ export default function HabbitsPage({ token }) {
     const [ativeAdd, setAtiveAdd] = useState("none")
     const [selectedDays, setSelectedDays] = useState([]);
     const week = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
+    
+    const {token} = useContext(UserData)
+    const {imageUser} = useContext(UserData)
+
 
     const ReloadDataHabits = useCallback(() => {
         console.log("Aconteceu alguma coisa")
@@ -112,7 +116,7 @@ export default function HabbitsPage({ token }) {
         <Container>
             <Header data-test="header">
                 <img src={LogoTrackit} />
-                <ImageUser />
+                <ImageUser imageUser={imageUser}/>
             </Header>
 
             <Content>

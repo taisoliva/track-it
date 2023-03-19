@@ -1,14 +1,18 @@
 import {Container, Header, ImageUser, Footer,ContainerRectangle, ContainerCircle } from "../styledCommon"
 import LogoTrackit from "../../assets/TrackIt.png"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import axios from "axios"
 import { URL_HISTORIC } from "../Urls"
 import {Content} from "./styled"
 import { Link } from "react-router-dom"
+import UserData from "../../context/UserData"
 
 
 
-export default function HistoricPage ({token}){
+export default function HistoricPage (){
+
+    const {token} = useContext(UserData)
+    const {imageUser} = useContext(UserData)
 
     useEffect(()=> {
       
@@ -27,7 +31,7 @@ export default function HistoricPage ({token}){
         <Container>
             <Header data-test="header">
                 <img src={LogoTrackit} />
-                <ImageUser />
+                <ImageUser imageUser={imageUser}/>
             </Header>
 
             <Content>

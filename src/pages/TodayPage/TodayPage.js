@@ -1,13 +1,17 @@
 import { Container, Header, ImageUser, Footer, ContainerRectangle, ContainerCircle } from "../styledCommon"
 import LogoTrackit from "../../assets/TrackIt.png"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { URL_TODAY } from "../Urls"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import UserData from "../../context/UserData"
 
 
-export default function TodayPage({ token }) {
+export default function TodayPage() {
 
+    const {imageUser} = useContext(UserData);
+    const {token} = useContext(UserData);
+   
     useEffect(() => {
 
         const config = {
@@ -17,8 +21,6 @@ export default function TodayPage({ token }) {
         axios.get(URL_TODAY, config)
             .then(res => console.log(res))
             .catch(err => console.log(err))
-
-
     }, [])
 
 
@@ -27,7 +29,7 @@ export default function TodayPage({ token }) {
         <Container>
             <Header data-test="header">
                 <img src={LogoTrackit} />
-                <ImageUser />
+                <ImageUser imageUser={imageUser}/>
             </Header>
 
             <Footer data-test="menu">
