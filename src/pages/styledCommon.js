@@ -149,4 +149,7 @@ export const ContainerCircle = styled.div`
     justify-content: center;
     align-items: center;
 
+    padding: 5px;
+
 `
+

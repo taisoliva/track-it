@@ -13,6 +13,8 @@ import Day from "../../components/Day"
 import { ThreeDots } from "react-loader-spinner"
 import Habit from "../../components/Habit"
 import UserData from "../../context/UserData"
+import { CircularProgressbar } from 'react-circular-progressbar'
+import "react-circular-progressbar/dist/styles.css"
 
 export default function HabbitsPage() {
 
@@ -22,9 +24,10 @@ export default function HabbitsPage() {
     const [ativeAdd, setAtiveAdd] = useState("none")
     const [selectedDays, setSelectedDays] = useState([]);
     const week = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
-    
-    const {token} = useContext(UserData)
-    const {imageUser} = useContext(UserData)
+
+    const { token } = useContext(UserData)
+    const { imageUser } = useContext(UserData)
+    const { porcentagem } = useContext(UserData);
 
 
     const ReloadDataHabits = useCallback(() => {
@@ -104,8 +107,8 @@ export default function HabbitsPage() {
             axios.delete(`${URL_HABITS}/${id}`, config)
                 .then(res => {
                     axios.get(URL_HABITS, config)
-                    .then(res => { console.log(res); setDataHabit(res.data) })
-                    .catch(err => console.log(err))
+                        .then(res => { console.log(res); setDataHabit(res.data) })
+                        .catch(err => console.log(err))
                 })
                 .catch(err => console.log(err.response.data.message))
         }
@@ -116,7 +119,7 @@ export default function HabbitsPage() {
         <Container>
             <Header data-test="header">
                 <img src={LogoTrackit} />
-                <ImageUser imageUser={imageUser}/>
+                <ImageUser imageUser={imageUser} />
             </Header>
 
             <Content>
@@ -184,7 +187,12 @@ export default function HabbitsPage() {
 
                 <Link data-test="today-link" to={"/hoje"}>
                     <ContainerCircle>
-                        Hoje
+                        <CircularProgressbar
+                            value={porcentagem}
+                            text={"Hoje"}
+                            styles={{ path: { stroke: "#FFFFFF" }, trail: { stroke: "#52B6FF" }, text: { fill: "#FFFFFF" } }}
+                        />
+
                     </ContainerCircle>
                 </Link>
 

@@ -12,10 +12,11 @@ function App() {
 
   const [token, setToken] = useState("")
   const [imageUser, setImageUser] = useState("")
+  const [porcentagem, setPorcentagem] = useState(0)
 
   return (
 
-    <UserData.Provider value={{token,setToken,imageUser,setImageUser}}>
+    <UserData.Provider value={{token,setToken,imageUser,setImageUser, porcentagem, setPorcentagem}}>
       <BrowserRouter>
         <GlobalStyle />
         <Routes>

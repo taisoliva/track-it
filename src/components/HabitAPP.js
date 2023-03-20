@@ -9,37 +9,29 @@ import { Center } from "../pages/TodayPage/styled"
 import { URL_HABITS, URL_TODAY } from "../pages/Urls"
 
 
-export default function HabitAPP({ item, array, setArray, setDataToday, contador, setContador }) {
+export default function HabitAPP({ item, array, setArray, setDataToday, contador, setContador,tamanho }) {
 
     const [colorSelect, setColorSelect] = useState("#EBEBEB")
     const [loading, setLoading] = useState(false)
-    const [igual, setIgual] = useState(false)
 
     console.log(item)
     console.log(array)
 
     const { token } = useContext(UserData)
+    const {setPorcentagem} = useContext(UserData);
 
     useEffect(() => {
 
         const yesterday = dayjs().subtract(1,'day').format('DD/MM/YYYY')
         localStorage.setItem('yesterday', yesterday)
 
-        if(item.currentSequence === item.highestSequence && item.currentSequence !== 0){
-            setIgual(true)
-        }
-
-
-
         if (array.includes(item.id)) {
             setColorSelect("#8FC549")
             console.log("Tamanho:", array.length)
             setContador(array.length)
+            setPorcentagem(array.length/tamanho * 100)
         } 
     }, [])
-
-    
-
 
 
     function done(id) {
@@ -58,7 +50,7 @@ export default function HabitAPP({ item, array, setArray, setDataToday, contador
                 .then(resposta => {
                     console.log(resposta);
                     axios.get(URL_TODAY, config)
-                        .then(res => { console.log(res.data); setDataToday(res.data); setColorSelect("#8FC549"); setContador(++contador); setLoading(false) })
+                        .then(res => { console.log(res.data); setDataToday(res.data); setColorSelect("#8FC549"); setContador(++contador); setLoading(false); setPorcentagem((contador/tamanho)*100) })
                         .catch(err => console.log(err))
                 })
                 .catch(err => console.log(err.response.data.message))
@@ -76,7 +68,7 @@ export default function HabitAPP({ item, array, setArray, setDataToday, contador
             axios.post(`${URL_HABITS}/${id}/uncheck`, {}, config)
                 .then(resposta => {
                     console.log(resposta); axios.get(URL_TODAY, config)
-                        .then(res => { console.log(res.data); setDataToday(res.data); setColorSelect("#EBEBEB"); setContador(--contador); setLoading(false) })
+                        .then(res => { console.log(res.data); setDataToday(res.data); setColorSelect("#EBEBEB"); setContador(--contador); setLoading(false); setPorcentagem((contador/tamanho)*100) })
                         .catch(err => console.log(err))
                 })
                 .catch(err => console.log(err.response.data.message))
@@ -89,7 +81,7 @@ export default function HabitAPP({ item, array, setArray, setDataToday, contador
 
     return (
         <Container data-test="today-habit-container">
-            <Text colorSelect={colorSelect} igual={igual} >
+            <Text colorSelect={colorSelect} igual={item.currentSequence === item.highestSequence && item.currentSequence > 0} >
                 <h1 data-test="today-habit-name"> {item.name} </h1>
                 <p data-test="today-habit-sequence"> {"Sequência Atual:"} <span> {`${item.currentSequence} dias`}</span> </p>
                 <p data-test="today-habit-record"> {`Seu recorde:`} <span> {`${item.highestSequence} dias`} </span> </p>
@@ -149,19 +141,32 @@ const Text = styled.div`
     }
 
     p{
+        &:nth-child(2){
+            span{
+                color: ${props => props.colorSelect === "#8FC549" ? "#8FC549" : "#666666"}
+            }
+        }
+
+        &:nth-child(3){
+            span{
+                color: ${props => props.igual ? "#8FC549" : "#666666"}
+            }
+        }
+
         font-size: 12px;
         line-height: 16px;
 
         color: #666666;
+
     }
 
     
     span:nth-child(1){
-        color: ${props => props.colorSelect === "#8FC549" ? "#8FC549" : "#666666"}
+        
     }
 
     span:nth-child(2){
-        color: ${props => props.igual ? "#8FC549" : "#666666"}
+        color: ${props => props.igual ? "red" : "#666666"}
     }
 
 

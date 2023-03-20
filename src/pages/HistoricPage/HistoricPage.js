@@ -1,37 +1,40 @@
-import {Container, Header, ImageUser, Footer,ContainerRectangle, ContainerCircle } from "../styledCommon"
+import { Container, Header, ImageUser, Footer, ContainerRectangle, ContainerCircle } from "../styledCommon"
 import LogoTrackit from "../../assets/TrackIt.png"
 import { useContext, useEffect } from "react"
 import axios from "axios"
 import { URL_HISTORIC } from "../Urls"
-import {Content} from "./styled"
+import { Content } from "./styled"
 import { Link } from "react-router-dom"
 import UserData from "../../context/UserData"
+import { CircularProgressbar } from 'react-circular-progressbar'
+import "react-circular-progressbar/dist/styles.css"
 
 
 
-export default function HistoricPage (){
+export default function HistoricPage() {
 
-    const {token} = useContext(UserData)
-    const {imageUser} = useContext(UserData)
+    const { token } = useContext(UserData)
+    const { imageUser } = useContext(UserData)
+    const {porcentagem} = useContext(UserData);
 
-    useEffect(()=> {
-      
+    useEffect(() => {
+
 
         const config = {
-            headers : { Authorization : `Bearer ${token}`}
+            headers: { Authorization: `Bearer ${token}` }
         }
 
         axios.get(URL_HISTORIC, config)
-        .then(res=>console.log(res))
-        .catch(err => console.log(err.response.data.message))
-    },[])
+            .then(res => console.log(res))
+            .catch(err => console.log(err.response.data.message))
+    }, [])
 
     return (
 
         <Container>
             <Header data-test="header">
                 <img src={LogoTrackit} />
-                <ImageUser imageUser={imageUser}/>
+                <ImageUser imageUser={imageUser} />
             </Header>
 
             <Content>
@@ -48,7 +51,12 @@ export default function HistoricPage (){
 
                 <Link data-test="today-link" to={"/hoje"}>
                     <ContainerCircle>
-                        Hoje
+                        <CircularProgressbar
+                            value={porcentagem}
+                            text={"Hoje"}
+                            styles={{ path: { stroke: "#FFFFFF" }, trail: { stroke: "#52B6FF" }, text: { fill: "#FFFFFF" } }}
+                        />
+
                     </ContainerCircle>
                 </Link>
 
