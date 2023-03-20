@@ -25,7 +25,7 @@ export default function TodayPage() {
     const [dataToday, setDataToday] = useState("")
     const [tamanho, setTamanho] = useState(0)
     const [array, setArray] = useState([])
-    const [contador, setContador] = useState(0)
+    const [contador, setContador] = useState(0);
 
 
     useEffect(() => {

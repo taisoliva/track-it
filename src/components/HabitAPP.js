@@ -1,4 +1,5 @@
 import axios from "axios"
+import dayjs from "dayjs"
 import { useContext, useEffect, useState } from "react"
 import { Grid, Oval } from "react-loader-spinner"
 import styled from "styled-components"
@@ -8,10 +9,11 @@ import { Center } from "../pages/TodayPage/styled"
 import { URL_HABITS, URL_TODAY } from "../pages/Urls"
 
 
-export default function HabitAPP({ item, array, setArray,  setDataToday, contador, setContador }) {
+export default function HabitAPP({ item, array, setArray, setDataToday, contador, setContador }) {
 
     const [colorSelect, setColorSelect] = useState("#EBEBEB")
     const [loading, setLoading] = useState(false)
+    const [igual, setIgual] = useState(false)
 
     console.log(item)
     console.log(array)
@@ -19,16 +21,26 @@ export default function HabitAPP({ item, array, setArray,  setDataToday, contado
     const { token } = useContext(UserData)
 
     useEffect(() => {
-        if (item.currentSequence !==0) {
+
+        const yesterday = dayjs().subtract(1,'day').format('DD/MM/YYYY')
+        localStorage.setItem('yesterday', yesterday)
+
+        if(item.currentSequence >= item.highestSequence){
+            setIgual(true)
+        }
+
+
+
+        if (array.includes(item.id)) {
             setColorSelect("#8FC549")
             console.log("Tamanho:", array.length)
-            setContador(array.length) 
-        }
+            setContador(array.length)
+        } 
     }, [])
 
-    console.log("Contador é:", contador)
     
-   
+
+
 
     function done(id) {
 
@@ -46,12 +58,12 @@ export default function HabitAPP({ item, array, setArray,  setDataToday, contado
                 .then(resposta => {
                     console.log(resposta);
                     axios.get(URL_TODAY, config)
-                        .then(res => { console.log(res.data); setDataToday(res.data); setColorSelect("#8FC549"); setContador(++contador); setLoading(false)})
+                        .then(res => { console.log(res.data); setDataToday(res.data); setColorSelect("#8FC549"); setContador(++contador); setLoading(false) })
                         .catch(err => console.log(err))
                 })
                 .catch(err => console.log(err.response.data.message))
         } else {
-            
+
 
             arrayAux = arrayAux.filter(i => i !== id)
             setArray(arrayAux)
@@ -64,7 +76,7 @@ export default function HabitAPP({ item, array, setArray,  setDataToday, contado
             axios.post(`${URL_HABITS}/${id}/uncheck`, {}, config)
                 .then(resposta => {
                     console.log(resposta); axios.get(URL_TODAY, config)
-                        .then(res => { console.log(res.data); setDataToday(res.data); setColorSelect("#EBEBEB"); setContador(--contador); setLoading(false)})
+                        .then(res => { console.log(res.data); setDataToday(res.data); setColorSelect("#EBEBEB"); setContador(--contador); setLoading(false) })
                         .catch(err => console.log(err))
                 })
                 .catch(err => console.log(err.response.data.message))
@@ -77,13 +89,13 @@ export default function HabitAPP({ item, array, setArray,  setDataToday, contado
 
     return (
         <Container data-test="today-habit-container">
-            <Text>
+            <Text colorSelect={colorSelect} igual={igual} >
                 <h1 data-test="today-habit-name"> {item.name} </h1>
-                <p data-test="today-habit-sequence"> {`Sequência atual: ${item.currentSequence} dias`}</p>
-                <p data-test="today-habit-record"> {`Seu recorde: ${item.highestSequence} dias`}</p>
+                <p data-test="today-habit-sequence"> {"Sequência Atual:"} <span> {`${item.currentSequence} dias`}</span> </p>
+                <p data-test="today-habit-record"> {`Seu recorde:`} <span> {`${item.highestSequence} dias`} </span> </p>
             </Text>
             <Selected data-test="today-habit-check-btn" onClick={() => done(item.id)} colorSelect={colorSelect}>
-               {!loading ? <img src={Vector} alt={Vector}/> : <Oval height="50" width="50" color="#52B6FF"/> }
+                {!loading ? <img src={Vector} alt={Vector} /> : <Oval height="50" width="50" color="#52B6FF" />}
             </Selected>
             {console.log(item)}
         </Container>
@@ -142,5 +154,15 @@ const Text = styled.div`
 
         color: #666666;
     }
+
+    
+    span:nth-child(1){
+        color: ${props => props.colorSelect === "#8FC549" ? "#8FC549" : "#666666"}
+    }
+
+    span:nth-child(2){
+        color: ${props => props.igual === "#8FC549" ? "#8FC549" : "#666666"}
+    }
+
 
 `
