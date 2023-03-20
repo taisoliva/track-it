@@ -55,8 +55,8 @@ export default function TodayPage() {
 
         <Container>
             <Header data-test="header">
-                <img src={LogoTrackit} />
-                <ImageUser imageUser={imageUser} />
+                <p> TrackIt </p>
+                <ImageUser imageUser={imageUser} /> 
             </Header>
 
             <ContainerToday>

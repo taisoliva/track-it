@@ -75,6 +75,18 @@ export const Header = styled.div`
 
         margin-left: 20px;
     }
+
+    p{
+        font-family: 'Playball';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 38.982px;
+        line-height: 49px;
+        /* identical to box height */
+        color: #FFFFFF;
+
+        margin-left: 10px;
+    }
 `
 export const ImageUser = styled.div`
     width: 50px;
