@@ -161,7 +161,7 @@ const Text = styled.div`
     }
 
     span:nth-child(2){
-        color: ${props => props.igual === "#8FC549" ? "#8FC549" : "#666666"}
+        color: ${props => props.igual ? "#8FC549" : "#666666"}
     }
 
 
