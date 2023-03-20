@@ -25,7 +25,7 @@ export default function HabitAPP({ item, array, setArray, setDataToday, contador
         const yesterday = dayjs().subtract(1,'day').format('DD/MM/YYYY')
         localStorage.setItem('yesterday', yesterday)
 
-        if(item.currentSequence >= item.highestSequence){
+        if(item.currentSequence === item.highestSequence && item.currentSequence !== 0){
             setIgual(true)
         }
 
