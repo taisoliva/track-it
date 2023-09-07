@@ -117,10 +117,6 @@ export default function HabbitsPage() {
     return (
 
         <Container>
-            <Header data-test="header">
-                <img src={LogoTrackit} />
-                <ImageUser imageUser={imageUser} />
-            </Header>
 
             <Content>
                 <ContentFixed>

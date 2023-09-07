@@ -54,11 +54,6 @@ export default function HistoricPage() {
     return (
 
         <Container>
-            <Header data-test="header">
-                <img alt="Logo" src={LogoTrackit} />
-                <ImageUser imageUser={imageUser} />
-            </Header>
-
             <Content>
                 <ContainerCalendar>
                     <StyledCalendar 
