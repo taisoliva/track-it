@@ -1,3 +1,7 @@
+# Projeto TrackIt
+
+Aplicacação de acompanhamento de Hábitos. Com este app, você pode criar e acompanhar seus hábitos diários, semanais e mensais. TrackIt permite registrar seus hábitos e monitorar seu progresso de forma rápida e fácil. 
+
 <!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
