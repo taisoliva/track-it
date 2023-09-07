@@ -6,7 +6,7 @@ import { ThreeDots } from "react-loader-spinner"
 import { useContext, useState } from "react"
 import axios from "axios"
 import {URL_LOGIN} from "../Urls"
-import UserData from "../../context/UserData"
+import UserData from "../../context/AuthContext"
 
 export default function Login() {
 

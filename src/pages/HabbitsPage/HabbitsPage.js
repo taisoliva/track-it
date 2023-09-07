@@ -12,7 +12,7 @@ import { Input } from "../styledCommon"
 import Day from "../../components/Day"
 import { ThreeDots } from "react-loader-spinner"
 import Habit from "../../components/Habit"
-import UserData from "../../context/UserData"
+import UserData from "../../context/AuthContext"
 import { CircularProgressbar } from 'react-circular-progressbar'
 import "react-circular-progressbar/dist/styles.css"
 

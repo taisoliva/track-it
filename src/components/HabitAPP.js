@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react"
 import { Grid, Oval } from "react-loader-spinner"
 import styled from "styled-components"
 import Vector from "../assets/Vector.png"
-import UserData from "../context/UserData"
+import UserData from "../context/AuthContext"
 import { Center } from "../pages/TodayPage/styled"
 import { URL_HABITS, URL_TODAY } from "../pages/Urls"
 

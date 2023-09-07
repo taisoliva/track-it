@@ -6,8 +6,11 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import TodayPage from "./pages/TodayPage/TodayPage";
 import GlobalStyle from "./styles/GlobalStyles"
-import UserData from "./context/UserData";
+import UserData, { AuthProvider } from "./context/AuthContext";
 import "./styles/calendar.css"
+import { ProgressProvider } from "./context/PercentageContext";
+
+export const pathsWithoutHeaderAndMenu = ['/', '/cadastro'];
 
 function App() {
 
@@ -17,7 +20,8 @@ function App() {
 
   return (
 
-    <UserData.Provider value={{token,setToken,imageUser,setImageUser, porcentagem, setPorcentagem}}>
+    <AuthProvider> 
+    <ProgressProvider>
       <BrowserRouter>
         <GlobalStyle />
         <Routes>
@@ -28,7 +32,8 @@ function App() {
           <Route path="/historico" element={<HistoricPage />} />
         </Routes>
       </BrowserRouter>
-    </UserData.Provider>
+    </ProgressProvider>
+    </AuthProvider>
 
   );
 }

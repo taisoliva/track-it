@@ -5,7 +5,7 @@ import axios from "axios"
 import { URL_HISTORIC } from "../Urls"
 import { ContainerCalendar, Content, StyledCalendar } from "./styled"
 import { Link } from "react-router-dom"
-import UserData from "../../context/UserData"
+import UserData from "../../context/AuthContext"
 import { CircularProgressbar } from 'react-circular-progressbar'
 import "react-circular-progressbar/dist/styles.css"
 import 'react-calendar/dist/Calendar.css';
