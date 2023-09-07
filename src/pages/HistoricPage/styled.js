@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Calendar from "react-calendar"
 
 export const Content = styled.div`
     width: 100vw;
@@ -23,4 +24,19 @@ export const Content = styled.div`
     line-height: 22px;
 
     color: #666666;
+`
+
+export const ContainerCalendar = styled.div`
+
+    height: 60vh;
+    margin-bottom: 30px;
+`
+
+
+export const StyledCalendar = styled(Calendar)`
+    width: 100%;
+    height: 100%;
+    margin-top: 12px;
+    border: none;
+    border-radius: 10px;
 `
