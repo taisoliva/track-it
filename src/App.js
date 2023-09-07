@@ -7,6 +7,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import TodayPage from "./pages/TodayPage/TodayPage";
 import GlobalStyle from "./styles/GlobalStyles"
 import UserData from "./context/UserData";
+import "./styles/calendar.css"
 
 function App() {
 
