@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# Projeto TrackIt 📈
+
+Aplicação de acompanhamento de Hábitos. Com este app, você pode criar e acompanhar seus hábitos diários, semanais e mensais. TrackIt permite registrar seus hábitos e monitorar seu progresso de forma rápida e fácil. 
+
+Pensando na acessibilidade do usuário a aplicação conta com icones e progressos que visam facilitar a experiência do usuário, tanto para criar, como parar ver o progresso e mais ainda acompanhar seu histórico de hábitos.
+
+<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -63,8 +69,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment] (https://facebook.github.io/create-react-app/docs/deployment)
 
 ### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->

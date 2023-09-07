@@ -1,5 +1,5 @@
 import { RegisterContainer, Register } from "./styled"
-import { Input, Button } from "../styledCommon"
+import { InputForm, ButtonForm } from "../styledCommon"
 import Logo from "../../assets/logo-completa.svg"
 import { Link, useNavigate } from "react-router-dom"
 import {useState } from "react"
@@ -8,17 +8,12 @@ import { URL_CADASTRO } from "../Urls"
 import { ThreeDots } from "react-loader-spinner"
 
 
+
 export default function RegisterPage() {
 
     const [form, setForm] = useState({ email: "", password: "", name: "", image: "" })
     const navigate = useNavigate()
     const [disabledButton, setDisabledButton] = useState(false)
-
-
-    function handleForm(event) {
-        console.log(event.target.name)
-        setForm({ ...form, [event.target.name]: event.target.value })
-    }
 
     function RegisterUser(event) {
         event.preventDefault()
@@ -39,46 +34,50 @@ export default function RegisterPage() {
                 <Register>
                     <img src={Logo} alt={Logo} />
 
-                    <Input data-test="email-input"
+                    <InputForm data-test="email-input"
+                        label = "Email" 
                         type="email"
                         placeholder="email"
                         name={"email"}
                         value={form.email}
                         disabled={disabledButton}
-                        onChange={handleForm} />
+                        onChange={e => setForm({ ...form, [e.target.name]: e.target.value })} />
 
-                    <Input data-test="password-input"
+                    <InputForm data-test="password-input"
+                        label="Senha"
                         type="password"
                         placeholder="senha"
                         name={"password"}
                         disabled={disabledButton}
                         value={form.password}
-                        onChange={handleForm}
+                        onChange={e => setForm({ ...form, [e.target.name]: e.target.value })}
 
                     />
-                    <Input data-test="user-name-input"
+                    <InputForm data-test="user-name-input"
+                        label="Nome"
                         type="text"
                         placeholder="nome"
                         name={"name"}
                         disabled={disabledButton}
                         value={form.name}
-                        onChange={handleForm}
+                        onChange={e => setForm({ ...form, [e.target.name]: e.target.value })}
 
                     />
-                    <Input data-test="user-image-input"
+                    <InputForm data-test="user-image-input"
+                        label="Foto"
                         type="text"
                         placeholder="foto"
                         name={"image"}
                         disabled={disabledButton}
                         value={form.image}
-                        onChange={handleForm}
+                        onChange={e => setForm({ ...form, [e.target.name]: e.target.value })}
                     />
-                    <Button data-test="signup-btn" disabled={disabledButton} type="submit">
-                        {disabledButton ? <ThreeDots color="#FFFFFF" height={80} width={80} timeout={3000} // 3 secs 
+                    <ButtonForm data-test="signup-btn" disabled={disabledButton} type="submit">
+                        {disabledButton ? <ThreeDots color="#FFFFFF" height={30} width={80} timeout={3000} // 3 secs 
                         /> : "Cadastrar"
                         }
 
-                    </Button>
+                    </ButtonForm>
                     <Link data-test="login-link" to={"/"}> Já tem uma conta? Faça login!</Link>
                 </Register>
             </form>

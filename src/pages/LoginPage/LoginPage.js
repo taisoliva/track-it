@@ -1,5 +1,5 @@
 import { HomePageContainer, HomePage } from "./styled"
-import { Input, Button } from "../styledCommon"
+import { InputForm, ButtonForm } from "../styledCommon"
 import Logo from "../../assets/logo-completa.svg"
 import { Link, useNavigate } from "react-router-dom"
 import { ThreeDots } from "react-loader-spinner"
@@ -11,7 +11,10 @@ import UserData from "../../context/UserData"
 export default function Login() {
 
     const [disabledButton, setDisabledButton] = useState(false)
-    const [form, setForm] = useState({ email: "", password: "" })
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     const navigate = useNavigate()
 
     const {setImageUser} = useContext(UserData);
@@ -21,16 +24,13 @@ export default function Login() {
         event.preventDefault()
         setDisabledButton(true)
 
-        const body = {...form}
+        const body = {email, password}
+
         axios.post(URL_LOGIN, body)
-        .then(res => {console.log(res); setToken(res.data.token); setImageUser(res.data.image) ;navigate("/hoje")})
+        .then(res => {setToken(res.data.token); setImageUser(res.data.image) ;navigate("/hoje")})
         .catch(err => {alert(err.response.data.message); setDisabledButton(false)})
 
 
-    }
-
-    function handleForm(event) {
-        setForm({ ...form, [event.target.name]: event.target.value })
     }
 
     return (
@@ -40,29 +40,30 @@ export default function Login() {
             <form onSubmit={SignUp}>
                 <HomePage>
                     <img src={Logo} alt={Logo}></img>
-                    <Input data-test="email-input" 
+                    <InputForm data-test="email-input" 
+                        label="Email"
                         type="email"
-                        placeholder="email"
-                        name={"email"}
-                        value={form.email}
-                        onChange={handleForm}
+                        variant="outlined"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
                         disabled={disabledButton} />
 
 
-                    <Input 
+                    <InputForm 
                         data-test="password-input"
+                        label="Senha"
                         type="password"
                         placeholder="senha"
                         name={"password"}
-                        value={form.senha}
-                        onChange={handleForm}
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
                         disabled={disabledButton} />
 
-                    <Button data-test="login-btn" type="submit" disabled={disabledButton}>
-                        {disabledButton ? <ThreeDots color="#FFFFFF" height={80} width={80} timeout={3000} // 3 secs 
+                    <ButtonForm data-test="login-btn" type="submit" disabled={disabledButton}>
+                        { disabledButton ? <ThreeDots color="#FFFFFF" height={30} width={80} timeout={3000} // 3 secs 
                         /> : "Entrar"
                         }
-                    </Button>
+                    </ButtonForm>
                     <Link data-test="signup-link" to={"/cadastro"}> Não tem uma conta? Cadastre-se</Link>
 
                 </HomePage>
