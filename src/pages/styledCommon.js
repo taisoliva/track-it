@@ -1,3 +1,4 @@
+import { TextField, ThemeProvider, createTheme, Button } from "@mui/material";
 import styled from "styled-components";
 
 export const Input = styled.input`
@@ -25,28 +26,56 @@ export const Input = styled.input`
         background-color: #F2F2F2;
     }
 
-`
+` 
 
-export const Button = styled.button`
-    width: 300px;
-    height: 45px;
-    background-color: #52B6FF;
+export  function InputForm({formatChars, variant = 'outlined', value='', onChange = () => 0,...props}) {
+    return  (
+      <StyledTextField {...props} value={value}  onChange={onChange} variant={variant} />
+    );
+  }
+  
+  const StyledTextField = styled(TextField)`
+    margin-top: 8px !important;
+    margin-top: 14px !important;
+    background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-    border:none;
+    border: 1px solid #000;
+  `;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+export function ButtonForm({variant="contained", children, ...props}) {
+    const theme = createTheme({
+        palette: {
+            ochre: {
+                main: '#000000',
+                light: '#000000',
+                dark: '#0254b3',
+                contrastText: '#f8f8f6',
+            },
+        },
+    })
+    return (
+        <ThemeProvider theme={theme}>
+            <StyledButton  variant={variant} {...props}> <strong> {children} </strong></StyledButton>
+        </ThemeProvider>
+    );
+}
 
+
+const StyledButton = styled(Button)`
+  margin-top: 14px !important;
+  width: 230px;
+  margin-bottom: 10px !important;
+
+  strong{
     font-family: 'Lexend Deca';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     text-align: center;
     color: #FFFFFF;
+  }
 
-    margin-bottom: 25px;
-    
 `
 
 export const Container = styled.div`
