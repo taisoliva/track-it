@@ -9,6 +9,7 @@ import  { AuthProvider } from "./context/AuthContext";
 import "./styles/calendar.css"
 import { ProgressProvider } from "./context/PercentageContext";
 import Header from "./components/Header";
+import FooterMenu from "./components/Footer";
 
 export const pathsWithoutHeaderAndMenu = ['/', '/cadastro'];
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/habitos" element={<HabbitsPage/>} />
           <Route path="/historico" element={<HistoricPage />} />
         </Routes>
+        <FooterMenu />
       </BrowserRouter>
     </ProgressProvider>
     </AuthProvider>

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ProgressContext from "../contexts/PercentageContext";
+import ProgressContext from "../context/PercentageContext";
 
 export default function useProgress() {
   return useContext(ProgressContext);

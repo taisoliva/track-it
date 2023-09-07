@@ -172,35 +172,6 @@ export default function HabbitsPage() {
                     </form>
                 </NewHabit>
             </Content>
-
-            <Footer data-test="menu">
-
-                <Link data-test="habit-link" to={"/habitos"}>
-                    <ContainerRectangle>
-                        Hábitos
-                    </ContainerRectangle>
-                </Link>
-
-                <Link data-test="today-link" to={"/hoje"}>
-                    <ContainerCircle>
-                        <CircularProgressbar
-                            value={porcentagem}
-                            text={"Hoje"}
-                            styles={{ path: { stroke: "#FFFFFF" }, trail: { stroke: "#52B6FF" }, text: { fill: "#FFFFFF" } }}
-                        />
-
-                    </ContainerCircle>
-                </Link>
-
-
-                <Link data-test="history-link" to={"/historico"}>
-                    <ContainerRectangle>
-                        Histórico
-                    </ContainerRectangle>
-                </Link>
-            </Footer>
-
-
         </Container>
     )
 }
