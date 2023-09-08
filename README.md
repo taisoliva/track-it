@@ -50,6 +50,7 @@ npm run start
 5. Finalmente acesse http://localhost:3000 no seu browser favorito (exceto no Internet Explorer)
 
 ## API 
+### Cadastro
   Para fazer cadastro, faça uma requisição POST para a URL 
 
   ```bash 
@@ -65,7 +66,9 @@ enviando um corpo no formato
 	password: "..."
 }
 ```
-Para fazer cadastro, faça uma requisição `POST` para a URL
+### Login 
+
+Para fazer Login, faça uma requisição `POST` para a URL
 
 ```
 https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login
@@ -79,6 +82,7 @@ enviando um corpo no formato
 	password: "..."
 }
 ```
+### Hábito 
 Para criar um hábito, faça uma requisição `POST` para a URL
 
 ```
@@ -116,7 +120,151 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HABITO
 
 com um cabeçalho `Authorization` com formato `Bearer TOKEN`, subtituindo `ID_DO_HABITO` na URL pelo id do hábito a ser deletado.
 
-**Dica**: pesquise sobre como enviar um request `DELETE` com axios
+Para fazer listar os hábitos do usuário, faça uma requisição `GET` para a URL
+
+```
+https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today
+```
+
+com um cabeçalho `Authorization` com formato `Bearer TOKEN`
+
+O servidor responderá com um array no formato.
+
+Para fazer listar os hábitos do usuário, faça uma requisição `POST` , com o body vazio, para a URL
+
+```
+https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HABITO/check
+```
+
+com um cabeçalho `Authorization` com formato `Bearer TOKEN`, substituindo `ID_DO_HABITO` na URL pelo id do hábito a ser marcado.
+
+Se:
+
+- O hábito já estiver marcado
+- O hábito não for do dia atual
+- O hábito não for do usuário logado
+
+o servidor vai responder com `Bad Request (400)`.
+
+Para fazer listar os hábitos do usuário, faça uma requisição `POST` , com o body vazio, para a URL
+
+```
+https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HABITO/uncheck
+```
+
+com um cabeçalho `Authorization` com formato `Bearer TOKEN`, substituindo `ID_DO_HABITO` na URL pelo id do hábito a ser marcado.
+
+Se:
+
+- O hábito não estiver marcado
+- O hábito não for do dia atual
+- O hábito não for do usuário logado
+
+o servidor vai responder com `Bad Request (400)`.
+
+
+### Histórico
+
+Para obter o histórico de hábitos diário do usuário, faça uma requisição `GET` para a URL
+
+```
+https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/history/daily
+```
+
+com um cabeçalho `Authorization` com formato `Bearer TOKEN`
+
+O servidor responderá com um array no formato
+
+```json
+[
+    {
+        "day": "20/05/2021",
+        "habits": [
+            {
+                "id": 3,
+                "name": "Acordar",
+                "date": "2021-05-20T12:00:00.000Z",
+                "weekDay": 4,
+                "historyId": null,
+                "done": false
+            }
+        ]
+    },
+    {
+        "day": "19/05/2021",
+        "habits": [
+            {
+                "id": 3,
+                "name": "Acordar",
+                "date": "2021-05-19T12:00:00.000Z",
+                "weekDay": 3,
+                "historyId": 626,
+                "done": true
+            },
+            {
+                "id": 1,
+                "name": "Ler 1 capítulo do livro",
+                "date": "2021-05-19T12:00:00.000Z",
+                "weekDay": 3,
+                "historyId": 625,
+                "done": true
+            }
+        ]
+    },
+    {
+        "day": "18/05/2021",
+        "habits": [
+            {
+                "id": 3,
+                "name": "Acordar",
+                "date": "2021-05-18T12:00:00.000Z",
+                "weekDay": 2,
+                "historyId": 7,
+                "done": true
+            }
+        ]
+    },
+    {
+        "day": "17/05/2021",
+        "habits": [
+            {
+                "id": 1,
+                "name": "Ler 1 capítulo do livro",
+                "date": "2021-05-17T12:00:00.000Z",
+                "weekDay": 1,
+                "historyId": 1,
+                "done": true
+            }
+        ]
+    },
+    {
+        "day": "16/05/2021",
+        "habits": [
+            {
+                "id": 1,
+                "name": "Ler 1 capítulo do livro",
+                "date": "2021-05-16T12:00:00.000Z",
+                "weekDay": 0,
+                "historyId": null,
+                "done": false
+            }
+        ]
+    },
+    {
+        "day": "14/05/2021",
+        "habits": [
+            {
+                "id": 1,
+                "name": "Ler 1 capítulo do livro",
+                "date": "2021-05-14T12:00:00.000Z",
+                "weekDay": 5,
+                "historyId": null,
+                "done": false
+            }
+        ]
+    }
+]
+```
 
 <!-- # Getting Started with Create React App
 
