@@ -1,200 +1,85 @@
+import { Button } from "@mui/material";
 import styled from "styled-components";
 
-export const Content = styled.div`
+export const Container = styled.div`
+  width: 100%;
+  height: 100%;
 
-    width: 100vw;
-    height: 83vh;
+  padding: 30px 18px;
+  margin-bottom: 100px;
 
-    
+  display: flex;
+  flex-direction: column;
 
-    position: relative;
+  background-color: #F2F2F2;
+`;
 
-    top:100px;
-    display: flex;
-    flex-direction: column;
-    
+export const RegisterContent = styled.div`
+  padding-top: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  width: 100%;
+
+  margin-bottom: 10px;
+`;
+
+export const Days = styled.div`
+  margin-top: 8px;
+  margin-bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  font-family: Lexend Deca;
+  font-size: 19.976px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  
+  pointer-events: ${(props) => props.disabled ? "none" : "all"};
+`;
+
+export const Title = styled.p`
+  font-size: 22px;
+  line-height: 29px;
+  font-family: Lexend Deca;
+  font-size: 22.976px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  color: #126BA5;
+`;
+
+
+export const StyledButton = styled(Button) `
+  background-color: #52B6FF !important;
+  color: white !important;
+  font-size: 30px !important;
+  width: 40px !important;
+  height: 35px !important;
 `
 
-export const ContentFixed = styled.div`
+export const StyledDay = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    width: 90vw;
-    height: 35px;
+  width: 30px;
+  height: 30px;
+  
+  padding-bottom: 2px;
+  border: ${(props) => props.isSelected ? "1px solid #CFCFCF" : "1px solid #D5D5D5"};
+  border-radius: 5px;
+  
+  font-size: 20px;
+  line-height: 25px;
+  
+  background: ${(props) => props.isSelected ? "#CFCFCF" : "#FFFFFF"};
+  color: ${(props) => props.isSelected ? "#FFFFFF" : "#DBDBDB"};
+`;
 
-    position: absolute;
-
-    
-    left: 20px;
-
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 22.976px;
-    line-height: 29px;
-    
-    color: #126BA5;
-
-    display: flex;
-    justify-content: space-between;
-
-`
-
-export const ContainerIonIcon = styled.div`
-
-    width: 40px;
-    height: 35px;
-
-    background-color: #52B6FF;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 5px;
-
-    ion-icon {
-        color: #FFFFFF;
-        font-style: normal;
-        font-weight: bolder;
-        font-size: 30px;    
-    }
-`
-export const Text = styled.div`
-    width: 90vw;
-    height: 70px;
-
-    margin: 7vh auto;
-    padding-left: 20px;
-    
-    
-    position: absolute;
-    left: 0;
-   
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 22px;
-    
-    color:#666666;
-
-    display: ${props => props.ativeAdd ==="flex" ? "none" : "flex"};;
-    flex-wrap: wrap;
-
-    
-`
-
-export const NewHabit = styled.div`
-
-    width: 90vw;
-    height: 180px;  
-
-    background-color: #FFFFFF;
-
-    margin-top: 100px;
-    margin: 7vh auto;
-
-    border-radius: 5px;
-
-    display: ${props => props.ativeAdd};
-    flex-direction: column;
-    justify-content: center;
-
-    padding: 2vh;
-
-    position: relative;
-    
-`
-
-export const Week = styled.div`
-    display: flex;
-
-    margin-bottom: 30px;
-    
-`
-
-export const Days = styled.button`
-
-    width: 30px;
-    height: 30px;
-
-    background-color: ${props => props.color ? "#CFCFCF" : "#FFFFFF"};
-
-    border: none;
-
-    margin-right: 5px;
-
-    border: 1px solid #D5D5D5;
-    border-radius: 5px;
-
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 19.976px;
-    line-height: 25px;
-
-    color: #DBDBDB;
-`
-export const ButtonSave = styled.button`
-    width: 90px;
-    height: 35px;
-    background-color: #52B6FF;
-    border-radius: 5px;
-    border:none;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    text-align: center;
-    color: #FFFFFF;
-
-    position: absolute;
-
-    bottom: 15px;
-    right: 15px;
-    
-`
-
-export const ButtonCancel = styled.button`
-    width: 90px;
-    height: 35px;
-    background-color: #FFFFFF;
-    border-radius: 5px;
-    border:none;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    text-align: center;
-    color: #52B6FF;
-
-    position: absolute;
-
-    bottom: 15px;
-    right: 120px;
-    
-`
-
-export  const ContainerHabit = styled.div`
-    width: 90vw;
-    height: 71vh;
-    
-    margin-top: 10vh;
-    margin-left: 4vw;
-
-    display: ${props => props.ativeAdd ==="flex" ? "none" : "flex"};
-    flex-direction: column;
-    align-items: center;
-
-    overflow: scroll;
-
-`

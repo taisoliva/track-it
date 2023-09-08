@@ -1,17 +1,23 @@
 import styled from "styled-components"
-import { Week } from "../pages/HabbitsPage/styled"
+import { Days } from "../styled"
+import weekDays from "../../../utils/weekDays"
+import { IconButton } from "@mui/material"
+import DeleteIcon from '@mui/icons-material/Delete';
 
-export default function Habit({ name, id ,days, week, deleteHabit }) {
+export default function Habit({ name, id, days, handleDeleteHabit }) {
     return (
         <ContainerItem data-test="habit-container">
             <Title>
                 <p data-test="habit-name"> {name} </p>
-                <ion-icon  data-test="habit-delete-btn" onClick={() => deleteHabit(id)}  name="trash-outline"></ion-icon>
+                {/* <ion-icon  data-test="habit-delete-btn" onClick={() => handleDeleteHabit(id)}  name="trash-outline"></ion-icon> */}
+                <IconButton aria-label="delete" size="small" onClick={() => handleDeleteHabit(id)}>
+                    <DeleteIcon fontSize="inherit" />
+                </IconButton>
             </Title>
 
-            <Week>
-                {week.map( (d,indice) => <Day data-test="habit-day" key={indice} color={days.includes(indice)}> {d[0]} </Day>)}
-            </Week>
+            <Days>
+                {weekDays.map((weekDay) => <Day data-test="habit-day" key={weekDay.id} color={days.includes(weekDay.id)}> {weekDay.day} </Day>)}
+            </Days>
 
         </ContainerItem>)
 }
