@@ -105,6 +105,7 @@ enviando um corpo no formato
 e um cabeçalho `Authorization` com formato `Bearer TOKEN`
 
 O servidor responderá com um objeto no formato
+--- 
 
  - Para listar os hábitos do usuário, faça uma requisição `GET` para a URL
 
@@ -115,6 +116,7 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits
 com um cabeçalho `Authorization` com formato `Bearer TOKEN`
 
 O servidor responderá com uma array no formato
+--- 
 
 - Para excluir um hábito do usuário, faça uma requisição `DELETE` para a URL
 
@@ -123,6 +125,8 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HABITO
 ```
 
 com um cabeçalho `Authorization` com formato `Bearer TOKEN`, subtituindo `ID_DO_HABITO` na URL pelo id do hábito a ser deletado.
+
+--- 
 
 - Para fazer listar os hábitos do usuário, faça uma requisição `GET` para a URL
 
@@ -133,6 +137,8 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today
 com um cabeçalho `Authorization` com formato `Bearer TOKEN`
 
 O servidor responderá com um array no formato.
+
+--- 
 
 - Para fazer listar os hábitos do usuário, faça uma requisição `POST` , com o body vazio, para a URL
 
@@ -149,6 +155,8 @@ Se:
 - O hábito não for do usuário logado
 
 o servidor vai responder com `Bad Request (400)`.
+
+--- 
 
 - Para fazer listar os hábitos do usuário, faça uma requisição `POST` , com o body vazio, para a URL
 
