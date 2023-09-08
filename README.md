@@ -49,6 +49,13 @@ npm run start
 ```
 5. Finalmente acesse http://localhost:3000 no seu browser favorito (exceto no Internet Explorer)
 
+## API 
+  Para fazer cadastro, faça uma requisição POST para a URL 
+
+  ```bash 
+    https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up
+  ```
+
 <!-- # Getting Started with Create React App
 
 - Tela de Login/Cadastro: Permite o usuário se cadastrar na aplicação e logar. se não houver login registrado é emitido um alerta para o usuário realizar o cadastro.
