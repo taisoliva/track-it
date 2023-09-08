@@ -55,6 +55,30 @@ npm run start
   ```bash 
     https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up
   ```
+enviando um corpo no formato
+
+```bash 
+    {
+	email: "...",
+	name: "...",
+	image: "...",
+	password: "..."
+}
+```
+Para fazer cadastro, faça uma requisição `POST` para a URL
+
+```
+https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login
+```
+
+enviando um corpo no formato
+
+```jsx
+{
+	email: "...",
+	password: "..."
+}
+```
 
 <!-- # Getting Started with Create React App
 
