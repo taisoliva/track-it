@@ -66,6 +66,8 @@ enviando um corpo no formato
 	password: "..."
 }
 ```
+--- 
+
 ### Login 
 
 Para fazer Login, faça uma requisição `POST` para a URL
@@ -83,8 +85,9 @@ enviando um corpo no formato
 }
 ```
 --- 
+
 ### Hábito 
-Para criar um hábito, faça uma requisição `POST` para a URL
+- Para criar um hábito, faça uma requisição `POST` para a URL
 
 ```
 https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits
@@ -103,7 +106,7 @@ e um cabeçalho `Authorization` com formato `Bearer TOKEN`
 
 O servidor responderá com um objeto no formato
 
-Para listar os hábitos do usuário, faça uma requisição `GET` para a URL
+ - Para listar os hábitos do usuário, faça uma requisição `GET` para a URL
 
 ```
 https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits
