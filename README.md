@@ -18,7 +18,7 @@ O trackIt é uma aplicação em que o usuário pode monitorar seus hábitos de m
 - Hábitos
 - Hoje
 - Histórico
-- Featuras Futuras : - Logout <br> - Editar
+- Featuras Futuras : <br> - Logout <br> - Editar
 
   ## Tecnologias
     
