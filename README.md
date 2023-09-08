@@ -49,6 +49,7 @@ npm run start
 ```
 5. Finalmente acesse http://localhost:3000 no seu browser favorito (exceto no Internet Explorer)
 
+<!-- 
  ## API 
 ### Cadastro
   Para fazer cadastro, faça uma requisição POST para a URL 
@@ -126,7 +127,7 @@ O servidor responderá com um objeto no formato
 ```
 
 --- 
-<!-- 
+
  - Para listar os hábitos do usuário, faça uma requisição `GET` para a URL
 
 ```
