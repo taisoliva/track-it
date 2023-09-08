@@ -31,6 +31,23 @@ O trackIt é uma aplicação em que o usuário pode monitorar seus hábitos de m
     ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
   ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
     ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
+  ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+
+  O React foi escolhido como tecnologia principal porque oferece diversos recursos e bibliotecas que facilitam o desenvolvimento de interfaces de usuário. E o MUI foi escolhido pois possui recursos para acessibilidade do usuário. E o Vercel foi a plataforma para o deploy do projeto.
+
+## Como rodar
+
+1. Clone este repository em https://github.com/taisoliva/track-it.git
+2. Navegue até a pasta trackIt e abra no seu editor de código favorito. 
+3. Instale as dependẽncias
+```bash
+npm i
+```
+4. Rode a aplicação com 
+```bash
+npm run start
+```
+5. Finalmente acesse http://localhost:3000 no seu browser favorito (exceto no Internet Explorer)
 
 <!-- # Getting Started with Create React App
 
