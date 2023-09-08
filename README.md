@@ -105,6 +105,22 @@ enviando um corpo no formato
 e um cabeçalho `Authorization` com formato `Bearer TOKEN`
 
 O servidor responderá com um objeto no formato
+
+``` {
+	name: "Nome do hábito",
+	days: [1, 3, 5] // segunda, quarta e sexta
+} ```
+
+e um cabeçalho `Authorization` com formato `Bearer TOKEN`
+
+O servidor responderá com um objeto no formato
+
+```{
+	id: 1,
+	name: "Nome do hábito",
+	days: [1, 3, 5]
+}```
+
 --- 
 
  - Para listar os hábitos do usuário, faça uma requisição `GET` para a URL
@@ -116,7 +132,7 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits
 com um cabeçalho `Authorization` com formato `Bearer TOKEN`
 
 O servidor responderá com uma array no formato
---- 
+
 
 - Para excluir um hábito do usuário, faça uma requisição `DELETE` para a URL
 
