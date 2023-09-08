@@ -79,13 +79,15 @@ const StyledButton = styled(Button)`
 `
 
 export const Container = styled.div`
-    background-color: #E5E5E5;;
     width: 100%;
-    height: 93vh;
+    height: 100%;
 
-    a{
-        text-decoration: none;
-    }
+    padding-bottom: 120px;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: #F2F2F2;
 `
 
 export const Header = styled.div`

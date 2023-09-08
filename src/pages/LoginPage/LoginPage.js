@@ -21,7 +21,7 @@ export default function Login() {
 
    useEffect(() => {
     if (auth && auth.token) {
-      navigate("/today");
+      navigate("/hoje");
     }
   }, [auth, navigate]);
 
