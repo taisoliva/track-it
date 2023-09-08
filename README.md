@@ -4,11 +4,20 @@ Aplicação de acompanhamento de Hábitos. Com este app, você pode criar e acom
 
 Pensando na acessibilidade do usuário a aplicação conta com icones e progressos que visam facilitar a experiência do usuário, tanto para criar, como parar ver o progresso e mais ainda acompanhar seu histórico de hábitos.
 
-<a href="https://track-it-three-wine.vercel.app/"> Link para a Aplicação </a>
+📱 <a href="https://track-it-three-wine.vercel.app/"> Link para a Aplicação </a>
 <p align="center">
   <img width="50%" src="./src/assets/TrackIt.gif" />
 </p>
 
+## Sobre
+
+O trackIt é uma aplicação em que o usuário pode monitorar seus hábitos de maneira rápida e prática. E além disso pode verificar o seu histórico.
+
+- Tela de Login/Cadastro: Permite o usuário se cadastrar na aplicação e logar. se não houver login registrado é emitido um alerta para o usuário realizar o cadastro.
+- Tela de Hoje: Mostra os hábitos que o usuário precisa realizar no dia em questão.
+- Tela de Hábitos: Permite o usuário excluir ou cadastrar um novo hábito.
+- Tela de Histórico: Exibe ao usuário um calendário, os dias que o usuário completou todos os hábitos fica em verde 🟢, quando não completa todos ou nenhum fica em vermelho 🔴. Dias que não tem hábito cadastrado fica em branco.
+- Features Futuras: Permitir o usuário fazer logout e editar um hábito.
 
 <!-- # Getting Started with Create React App
 
