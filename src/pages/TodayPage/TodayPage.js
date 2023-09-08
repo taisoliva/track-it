@@ -1,113 +1,56 @@
-import { Container, Header, ImageUser, Footer, ContainerRectangle, ContainerCircle, Circle } from "../styledCommon"
-import LogoTrackit from "../../assets/TrackIt.png"
-import { useContext, useEffect, useState } from "react"
+import { Container } from "../styledCommon"
+import { useEffect, useState } from "react"
 import { URL_TODAY } from "../Urls"
 import axios from "axios"
-import { Link } from "react-router-dom"
-import UserData from "../../context/UserData"
-import { ContainerToday, ContentFixed, Center, ContainerTodayHabit } from "./styled"
-import dayjs from "dayjs"
-import "dayjs/locale/pt-br"
+import { Center, Content } from "./styled"
 import { Grid } from "react-loader-spinner"
-import HabitAPP from "../../components/HabitAPP"
-import { CircularProgressbar } from 'react-circular-progressbar'
 import "react-circular-progressbar/dist/styles.css"
+import useAuth from "../../hooks/useAuth"
+import useProgress from "../../hooks/useProgress"
+import Date from "./Date"
+import Subtitle from "./Subtitle"
+import Habit from "./Habit"
 
 export default function TodayPage() {
 
-    const { imageUser } = useContext(UserData);
-    const { token } = useContext(UserData);
-    const {porcentagem} = useContext(UserData);
-    const {setPorcentagem} = useContext(UserData)
-    
-    let isHabit = false
-
-    dayjs.locale("pt-br")
-    const currentDate = dayjs();
-    const weekDay = currentDate.format('dddd').charAt(0).toUpperCase() + currentDate.format('dddd').slice(1)
-    const formattedDate = `${weekDay}, ${currentDate.format('DD/MM')}`
+    const { auth } = useAuth()
+    const { updateProgress } = useProgress()
 
     const [dataToday, setDataToday] = useState("")
-    const [tamanho, setTamanho] = useState(0)
-    const [array, setArray] = useState([])
-    const [contador, setContador] = useState(0);
+    const [doneHabitsQuantity, setDoneHabitsQuantity] = useState(0);
 
-
-    useEffect(() => {
+    function loadTodayHabits() {
         const config = {
-            headers: { Authorization: `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${auth.token}` }
         }
 
         axios.get(URL_TODAY, config)
-            .then(res => { console.log(res.data); setDataToday(res.data); setTamanho(res.data.length) })
-            .catch(err => console.log(err))
-    }, [])
+            .then(res => {
+                const apiHabits = res.data
+                setDataToday(res.data)
+                const doneHabits = apiHabits.filter(habit => habit.done)
+                updateProgress(doneHabits.length, apiHabits.length)
+                setDoneHabitsQuantity(doneHabits.length)
 
-    
+            })
+            .catch(err => alert(err.response.data.message))
+    }
+    useEffect(loadTodayHabits, [auth.token, updateProgress])
 
     if (dataToday === "") {
         return <Center> <Grid height="80" width="80" color="#52B6FF" /> </Center>
     }
 
-    console.log("Contador é:", contador)
-
     return (
 
         <Container>
-            <Header data-test="header">
-                <p> TrackIt </p>
-                <ImageUser imageUser={imageUser} /> 
-            </Header>
-
-            <ContainerToday>
-                <ContentFixed contador={contador}>
-                    <p data-test="today"> {formattedDate} </p>
-                    <div data-test="today-counter"> {dataToday.filter(item => { if (item.done === true) { if (!array.includes(item.id)) { array.push(item.id)}; isHabit = true } })}
-                        {isHabit ? `${((contador / tamanho) * 100).toFixed(2)}% dos hábitos concluídos` : "Nenhum hábito concluído ainda"}</div>
-                </ContentFixed>
-
-                <ContainerTodayHabit>
-                    {dataToday.map(item => <HabitAPP key={item.id}
-                        item={item}
-                        tamanho={tamanho}
-                        array={array}
-                        setArray={setArray}
-                        contador={contador}
-                        setDataToday={setDataToday}
-                        setContador={setContador} />)}
-                </ContainerTodayHabit>
-            </ContainerToday>
-
-
-
-            <Footer data-test="menu">
-
-                <Link data-test="habit-link" to={"/habitos"}>
-                    <ContainerRectangle>
-                        Hábitos
-                    </ContainerRectangle>
-                </Link>
-
-                <Link data-test="today-link" to={"/hoje"}>
-
-                    <ContainerCircle>
-                        <CircularProgressbar 
-                            value={porcentagem} 
-                            text={"Hoje"}
-                            styles={{path: {stroke: "#FFFFFF"}, trail:{stroke:"#52B6FF"}, text:{fill:"#FFFFFF"}}}
-                            />
-                           
-                    </ContainerCircle>
-                </Link>
-
-
-                <Link data-test="history-link" to={"/historico"}>
-                    <ContainerRectangle>
-                        Histórico
-                    </ContainerRectangle>
-                </Link>
-            </Footer>
-
+            <Content>
+                <Date />
+                <Subtitle doneHabitsQuantity={doneHabitsQuantity} />
+                {dataToday.map(item => <Habit key={item.id}
+                    item={item}
+                    loadTodayHabits = {loadTodayHabits} />)}
+            </Content>
         </Container>
     )
 }

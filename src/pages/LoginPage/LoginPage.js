@@ -3,10 +3,10 @@ import { InputForm, ButtonForm } from "../styledCommon"
 import Logo from "../../assets/logo-completa.svg"
 import { Link, useNavigate } from "react-router-dom"
 import { ThreeDots } from "react-loader-spinner"
-import { useContext, useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import {URL_LOGIN} from "../Urls"
-import UserData from "../../context/UserData"
+import useAuth from "../../hooks/useAuth"
 
 export default function Login() {
 
@@ -17,8 +17,13 @@ export default function Login() {
 
     const navigate = useNavigate()
 
-    const {setImageUser} = useContext(UserData);
-    const {setToken} = useContext(UserData);
+    const {auth, login } = useAuth()
+
+   useEffect(() => {
+    if (auth && auth.token) {
+      navigate("/hoje");
+    }
+  }, [auth, navigate]);
 
     function SignUp(event) {
         event.preventDefault()
@@ -27,7 +32,7 @@ export default function Login() {
         const body = {email, password}
 
         axios.post(URL_LOGIN, body)
-        .then(res => {setToken(res.data.token); setImageUser(res.data.image) ;navigate("/hoje")})
+        .then(res => {login(res.data) ;navigate("/hoje")})
         .catch(err => {alert(err.response.data.message); setDisabledButton(false)})
 
 
