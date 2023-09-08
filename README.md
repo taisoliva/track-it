@@ -4,7 +4,10 @@ Aplicação de acompanhamento de Hábitos. Com este app, você pode criar e acom
 
 Pensando na acessibilidade do usuário a aplicação conta com icones e progressos que visam facilitar a experiência do usuário, tanto para criar, como parar ver o progresso e mais ainda acompanhar seu histórico de hábitos.
 
-<img align="center" src="./src/assets/TrackIt.gif" />
+<p align="center">
+  <img width="50%" src="./src/assets/TrackIt.gif" />
+</p>
+
 
 <!-- # Getting Started with Create React App
 
