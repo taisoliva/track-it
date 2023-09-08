@@ -13,13 +13,23 @@ Pensando na acessibilidade do usuário a aplicação conta com icones e progress
 
 O trackIt é uma aplicação em que o usuário pode monitorar seus hábitos de maneira rápida e prática. E além disso pode verificar o seu histórico.
 
+- Login
+- Cadastro
+- Hábitos
+- Hoje
+- Histórico
+- Featuras Futuras : - Logout, - Editar
+
+  ## Tecnologias
+    
+
+<!-- # Getting Started with Create React App
+
 - Tela de Login/Cadastro: Permite o usuário se cadastrar na aplicação e logar. se não houver login registrado é emitido um alerta para o usuário realizar o cadastro.
 - Tela de Hoje: Mostra os hábitos que o usuário precisa realizar no dia em questão.
 - Tela de Hábitos: Permite o usuário excluir ou cadastrar um novo hábito.
 - Tela de Histórico: Exibe ao usuário um calendário, os dias que o usuário completou todos os hábitos fica em verde 🟢, quando não completa todos ou nenhum fica em vermelho 🔴. Dias que não tem hábito cadastrado fica em branco.
 - Features Futuras: Permitir o usuário fazer logout e editar um hábito.
-
-<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
