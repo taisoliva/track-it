@@ -82,6 +82,7 @@ enviando um corpo no formato
 	password: "..."
 }
 ```
+--- 
 ### Hábito 
 Para criar um hábito, faça uma requisição `POST` para a URL
 
