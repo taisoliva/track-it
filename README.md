@@ -79,6 +79,44 @@ enviando um corpo no formato
 	password: "..."
 }
 ```
+Para criar um hábito, faça uma requisição `POST` para a URL
+
+```
+https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits
+```
+
+enviando um corpo no formato
+
+```jsx
+{
+	name: "Nome do hábito",
+	days: [1, 3, 5] // segunda, quarta e sexta
+}
+```
+
+e um cabeçalho `Authorization` com formato `Bearer TOKEN`
+
+O servidor responderá com um objeto no formato
+
+Para listar os hábitos do usuário, faça uma requisição `GET` para a URL
+
+```
+https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits
+```
+
+com um cabeçalho `Authorization` com formato `Bearer TOKEN`
+
+O servidor responderá com uma array no formato
+
+Para excluir um hábito do usuário, faça uma requisição `DELETE` para a URL
+
+```
+https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HABITO
+```
+
+com um cabeçalho `Authorization` com formato `Bearer TOKEN`, subtituindo `ID_DO_HABITO` na URL pelo id do hábito a ser deletado.
+
+**Dica**: pesquise sobre como enviar um request `DELETE` com axios
 
 <!-- # Getting Started with Create React App
 
