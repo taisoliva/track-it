@@ -106,20 +106,22 @@ e um cabeçalho `Authorization` com formato `Bearer TOKEN`
 
 O servidor responderá com um objeto no formato
 
-``` {
+``` bash {
 	name: "Nome do hábito",
 	days: [1, 3, 5] // segunda, quarta e sexta
-} ```
+         }
+```
 
 e um cabeçalho `Authorization` com formato `Bearer TOKEN`
 
 O servidor responderá com um objeto no formato
 
-```{
+```json{
 	id: 1,
 	name: "Nome do hábito",
 	days: [1, 3, 5]
-}```
+    }
+```
 
 --- 
 
