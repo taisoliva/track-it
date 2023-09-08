@@ -116,7 +116,7 @@ com um cabeçalho `Authorization` com formato `Bearer TOKEN`
 
 O servidor responderá com uma array no formato
 
-Para excluir um hábito do usuário, faça uma requisição `DELETE` para a URL
+- Para excluir um hábito do usuário, faça uma requisição `DELETE` para a URL
 
 ```
 https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HABITO
@@ -124,7 +124,7 @@ https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HABITO
 
 com um cabeçalho `Authorization` com formato `Bearer TOKEN`, subtituindo `ID_DO_HABITO` na URL pelo id do hábito a ser deletado.
 
-Para fazer listar os hábitos do usuário, faça uma requisição `GET` para a URL
+- Para fazer listar os hábitos do usuário, faça uma requisição `GET` para a URL
 
 ```
 https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today
@@ -134,7 +134,7 @@ com um cabeçalho `Authorization` com formato `Bearer TOKEN`
 
 O servidor responderá com um array no formato.
 
-Para fazer listar os hábitos do usuário, faça uma requisição `POST` , com o body vazio, para a URL
+- Para fazer listar os hábitos do usuário, faça uma requisição `POST` , com o body vazio, para a URL
 
 ```
 https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HABITO/check
@@ -150,7 +150,7 @@ Se:
 
 o servidor vai responder com `Bad Request (400)`.
 
-Para fazer listar os hábitos do usuário, faça uma requisição `POST` , com o body vazio, para a URL
+- Para fazer listar os hábitos do usuário, faça uma requisição `POST` , com o body vazio, para a URL
 
 ```
 https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/ID_DO_HABITO/uncheck
@@ -166,10 +166,10 @@ Se:
 
 o servidor vai responder com `Bad Request (400)`.
 
-
+--- 
 ### Histórico
 
-Para obter o histórico de hábitos diário do usuário, faça uma requisição `GET` para a URL
+- Para obter o histórico de hábitos diário do usuário, faça uma requisição `GET` para a URL
 
 ```
 https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/history/daily
