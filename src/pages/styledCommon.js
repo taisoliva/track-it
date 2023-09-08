@@ -80,7 +80,7 @@ const StyledButton = styled(Button)`
 
 export const Container = styled.div`
     width: 100%;
-    height: 100%;
+    height: 100vh;
 
     padding-bottom: 120px;
 

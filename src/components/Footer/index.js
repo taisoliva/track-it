@@ -36,7 +36,7 @@ export default function FooterMenu() {
                     </Link>
                 </CircularProgressbarContainer>
             </ContentProgressbar>
-            <StyledLink to="/historic">Histórico</StyledLink>
+            <StyledLink to="/historico">Histórico</StyledLink>
         </Footer>
     )
 }

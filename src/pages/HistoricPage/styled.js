@@ -5,7 +5,6 @@ export const Content = styled.div`
     width: 100vw;
     height: 83vh;
 
-    
     position: absolute;
 
     top:100px;
